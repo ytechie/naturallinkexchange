@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+	<Fragment>
+		<ComponentGroup Id="groupEmailEngineComponents">
+			<ComponentRef Id="emailEngineExe" />
+			<ComponentRef Id="emailEngineSupportingFiles" />
+		</ComponentGroup>
+
+		<DirectoryRef Id="ServicesInstallDir">
+			<Directory Id="EMAILENGINEDIR" Name="EmailEng" LongName="Email Engine">
+				<Component Id="emailEngineExe" Guid="d1769cc1-bb45-11da-a94d-0800200c9a66">
+					<File Id='Nle.EmailEngine.exe' Name='Eng.exe' LongName="Nle.EmailEngine.exe"  src='..\Services\EmailEngine\Nle.EmailEngine.exe' DiskId ='1'/>
+					<ServiceInstall Id="Nle.EmailEngine.exe" Name='Nle.EmailEngine' DisplayName='NaturalLinkExchange.com Email Engine'
+						Type='ownProcess' Interactive='yes' Start='auto' Vital='no'
+						ErrorControl='normal'/>
+					<ServiceControl Id="Nle.EmailEngine.exe" Name='Nle.EmailEngine' Start='install' Stop='both' Remove='uninstall' 
+						Wait='no'/>
+				</Component>
+				<Component Id="emailEngineSupportingFiles" Guid="d1769cc9-bb45-11da-a94d-0800200c9a66">
+					<File Id="Nle.Framework.DLL" Name="Framewrk.dll" LongName="Nle.Framework.dll" src="..\Services\EmailEngine\Nle.Framework.dll" DiskId="1" />
+					<File Id="YTech.General.DLL" Name="YGeneral.dll" LongName="YTech.General.dll" src="..\Services\EmailEngine\YTech.General.dll" DiskId="1" />
+					<File Id="YTech.Db.DLL" Name="YDB.dll" LongName="YTech.Db.DLL" src="..\Services\EmailEngine\YTech.Db.DLL" DiskId="1" />
+					<File Id="log4net.dll" Name="log4net.dll" src="..\Services\EmailEngine\log4net.dll" DiskId="1" />
+          <File Id="Logging.config" Name="Logging.cfg" LongName="Logging.config" src="..\Services\EmailEngine\Logging.config" DiskId="1" />
+				</Component>
+			</Directory>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

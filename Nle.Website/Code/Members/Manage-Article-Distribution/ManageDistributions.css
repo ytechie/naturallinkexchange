@@ -1,0 +1,53 @@
+﻿body {
+}
+
+table
+{
+}
+th
+{
+	text-align: left;
+}
+td
+{
+	border-top: solid 1px gray;
+}
+div.DistributionTable
+{
+	font-weight: bold;
+	text-align: right;
+	width: 735px;
+}
+table.DistributionTable
+{
+	background-color: Gray;
+	border: solid 1px Gray;
+	text-align: left;
+	width: 800px;
+}
+.DistributionTable_HeaderRow
+{
+	background-color: Gray;
+	color: White;
+}
+.DistributionTable_Row
+{
+	background-color: White;
+}
+.DistributionTable_AltRow
+{
+	background-color: Silver;
+}
+.DistributionTable_Name
+{
+	width: 300px;
+}
+.DistributionTable_Link
+{
+	width: 300px;
+}
+.DistributionTable_Distribution
+{
+	text-align: right;
+	width: 50px;
+}

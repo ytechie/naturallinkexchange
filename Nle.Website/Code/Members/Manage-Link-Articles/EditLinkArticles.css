@@ -1,0 +1,75 @@
+.articleBox
+{
+	width: 650px;
+}
+
+.articleTitle
+{
+	width: 300px;
+}
+
+.groupTitle
+{
+	width: 300px;
+}
+
+.groupDistribution
+{
+	width: 50px;
+}
+
+.linkTitle
+{
+	width: 300px;
+}
+
+.linkUrl
+{
+	width: 30%;
+}
+
+.Url
+{
+	background-color: White;
+	border: solid 1px #A5ACB2;
+	display: inline;
+	vertical-align: bottom;
+	padding: 2px;
+	line-height: 22pt;
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.Url input
+{
+	border: solid 0px white;
+	border: none;
+	font-size: 10pt;
+	font-family: Arial;
+}
+
+.Disabled
+{
+	background-color: #EBEBE4;
+	color: #C2A8A7;
+}
+.Information
+{
+	background: #FFFFE1;
+	border-style: ridge;
+	border-color: gainsboro;	
+}
+.Information p
+{
+	display: inline;
+}
+.Information img
+{
+	float: left;
+	padding: 2px;
+	padding-right: 20px;
+}
+.AdvancedCheckbox
+{
+	font-size: 12pt;
+}

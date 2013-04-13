@@ -1,0 +1,14 @@
+#sourceTree
+{
+	height: 300px;
+	width: 200px;
+	overflow: auto;
+	border: solid 1px black;
+	float: left;
+}
+
+.divPanel select
+{
+	width: 200px;
+	height: 100px;
+}

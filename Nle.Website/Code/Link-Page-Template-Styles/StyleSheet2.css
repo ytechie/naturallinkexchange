@@ -1,0 +1,82 @@
+body
+{
+	font-family: Verdana;
+	font-size: 10pt;
+	font-variant: small-caps;
+}
+
+h1
+{
+	text-align: center;
+}
+
+h2
+{
+	font-family: Verdana;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: dashed 1px black;
+}
+
+#titleHeader
+{
+}
+
+#relatedCategoriesContainer
+{
+	border-top: solid 1px black;
+	float: left;
+	display: inline;
+	margin-bottom: 0px;
+	width: 250px;
+}
+
+#relatedCategoriesHeader
+{
+}
+
+#relatedCategories
+{
+	position: relative;
+	left: 0px;
+	display: block;
+}
+
+#relatedCategories ul
+{
+	margin: 1px;
+	padding: 0px;
+	padding-bottom: 20px;
+}
+
+#relatedCategories ul li
+{
+	display: block;
+}
+
+#relatedArticlesContainer
+{
+	border-top: solid 1px black;
+	padding-left: 560px;
+}
+
+#relatedArticlesHeader
+{
+}
+
+#latestNewsContainer
+{
+	width: 300px;
+	float: left;
+	border-top: solid 1px black;
+	border-right: solid 1px black;
+	background-color: Silver;
+}
+
+#latestNewsHeader
+{
+}
+
+#latestNews
+{
+}

@@ -1,0 +1,93 @@
+body
+{
+	font-family: Verdana;
+	font-size: 10pt;
+}
+
+h1
+{
+	color: Red;
+}
+
+#titleHeader
+{
+}
+
+#relatedCategoriesContainer
+{
+	display: inline;
+	margin-bottom: 0px;
+}
+
+#relatedCategoriesHeader
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#relatedCategories
+{
+	position: relative;
+	left: 0px;
+	display: block;
+}
+
+#relatedCategories ul
+{
+	margin: 1px;
+	padding: 0px;
+	padding-bottom: 20px;
+}
+
+#relatedCategories ul li
+{
+	display: block;
+	background-color: Navy;
+	border: solid 1px white;
+	color: White;
+	width: 175px;
+	text-align: center;
+}
+
+#relatedCategories ul li a
+{
+	color: White;
+	text-decoration: none;
+}
+
+#relatedCategories ul li a:hover
+{
+	font-weight: bold;
+}
+
+#relatedArticlesContainer
+{
+	border-top: solid 1px black;
+	padding-left: 310px;
+}
+
+#relatedArticlesHeader
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#latestNewsContainer
+{
+	width: 300px;
+	float: left;
+	border-top: solid 1px black;
+	border-right: solid 1px black;
+	background-color: Silver;
+}
+
+#latestNewsHeader
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+#latestNews
+{
+	font-variant: small-caps;
+}

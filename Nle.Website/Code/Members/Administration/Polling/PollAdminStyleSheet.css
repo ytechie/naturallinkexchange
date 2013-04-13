@@ -1,0 +1,107 @@
+body
+{
+   font-size: 10pt;
+   font-family: Verdana, Arial;
+}
+.PageTitle
+{
+   border-top: darkblue thin solid;
+   font-size: 14pt;
+   color: royalblue;
+   border-bottom: darkblue 1pt solid;
+   background-color: linen;
+   font-variant: small-caps;
+}
+TABLE
+{
+   font-size: 10pt;
+   font-family: Verdana, Arial;
+}
+TD
+{
+   font-size: 10pt;
+   font-family: Verdana, Arial;
+}
+.StndCmds A
+{
+   font-size: 8pt;
+}
+.MenuCmds A {
+	BORDER-RIGHT: sandybrown thin solid; BORDER-TOP: sandybrown thin solid; FONT-WEIGHT: normal; FONT-SIZE: 12pt; BORDER-LEFT: sandybrown thin solid; COLOR: royalblue; BORDER-BOTTOM: sandybrown thin solid; FONT-FAMILY: 'Eras Demi ITC'; BACKGROUND-COLOR: linen
+}
+.MenuCmds A:active {
+	
+}
+.MenuCmds A:hover {
+	BACKGROUND-COLOR: moccasin
+}
+.MenuCmds A:link {
+}
+.MenuCmds A:visited {
+	
+}
+.Hint
+{
+   font-size: 8pt;
+}
+
+.PollListTable
+{
+   border-right: mediumblue 1px solid;
+   border-top: mediumblue 1px solid;
+   font-size: 10pt;
+   border-left: mediumblue 1px solid;
+   border-bottom: mediumblue 1px solid;
+   font-family: Verdana, Arial;
+}
+
+.PollListHeader
+{
+   background-color: antiquewhite;
+}
+
+.PollListRow
+{
+   background-color: whitesmoke;
+}
+
+.PollListRowAlt
+{
+}
+
+.SelectionCriteriaPanel
+{
+   border-right: lightgrey ridge;
+   border-top: lightgrey ridge;
+   border-left: lightgrey ridge;
+   border-bottom: lightgrey ridge;
+}
+
+.SelectionCriteriaTitle
+{
+   font-weight: bold;
+   font-size: smaller;
+}
+
+.SelectionCriteriaQuickLookupBox
+{
+   border-right: mediumblue 1px solid;
+   border-top: mediumblue 1px solid;
+   border-left: mediumblue 1px solid;
+   border-bottom: mediumblue 1px solid;
+   background-color: whitesmoke;
+}
+
+.PollEditorFieldTitle
+{
+}
+
+.PollEditorValidationMessage
+{
+   color: red;
+}
+
+.PollEditorHint
+{
+   font-size: 8pt;
+}

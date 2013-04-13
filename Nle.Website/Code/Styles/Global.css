@@ -1,0 +1,484 @@
+body
+{
+	background-image: url(../Images/Background-Main.jpg);
+	font-size: 13pt;
+	font-family: Garamond;
+	margin: 0px 0px 0px 0px;
+}
+
+h1
+{
+	font-size: 16pt;
+	font-family: Verdana;
+}
+
+h2
+{
+	font-size: 14pt;
+	font-family: Verdana;
+}
+
+h3
+{
+	font-family: Verdana;
+}
+
+h4
+{
+	font-family: Verdana;
+}
+
+h5
+{
+	font-family: Verdana;
+}
+
+h6
+{
+	font-family: Verdana;
+}
+
+.starBurst
+{
+	position: absolute;
+	top: 50px;
+	left: 10px;
+	z-index: 100;
+}
+
+.SandboxLabel
+{
+	color: Tan;
+	position: absolute;
+	font-size: 22pt;
+	font-weight: bold;
+	left: 380px;
+	top: 18px;
+	display: block;
+	font-variant: small-caps;
+}
+
+.standardFieldLabel
+{
+	float: left;
+	width: 150px;
+	display: inline;
+}
+
+.divPanel
+{
+	padding: 5px;
+	margin: 2px 0px 0px 0px;
+	background: #fff;
+	border: 1px solid #666;
+	float: left;
+	margin: 5px 10px 5px 0px;
+	height: 150px;
+}
+
+.divPanel h1
+{
+	margin-top: 3px;
+	padding: 2px 5px 2px 5px;
+	font-size: 10pt;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+
+.pageHeader
+{
+	height:	20px;
+	margin-top: 2px;
+}
+
+.pageHeader a
+{
+	color: Black;
+	text-decoration: none;
+	font-family: lucida, arial, helvetica, sans;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.mainLogo
+{
+	height: 50px;
+	width: 363px;
+	border: 0px;
+	margin-bottom: -10px
+}
+
+.topRight
+{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 50px;
+	width: 400px;
+	font-family: Arial;
+	font-size: 10pt;
+	text-align: right;
+}
+
+img
+{
+	border: 0px;
+}
+
+.stretchBar
+{
+	width: 100%;
+	height: 10px;
+	margin-bottom: -4px;
+}
+
+.pictureBar
+{
+	width: 100%;
+	height: 80px;
+	border: none;
+	margin-bottom: -10px;
+}
+
+.separatorBar
+{
+	width: 100%;
+	height: 9px;
+	border: none;
+}
+
+.menuHeaderImage
+{
+	position: relative;
+	border: 0px;
+	margin-bottom: -5px;
+}
+
+.menuContainer
+{
+	position: absolute;
+	top: 89px;
+	margin-left: 10px;
+	width: 175px;
+	border: solid 1px black;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	z-index: 50;
+}
+
+#googleSearchContainer
+{
+	position: absolute;
+	top: 475px;
+	margin-left: 10px;
+	width: 175px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	display: none; /* hide this for now since it's broken */
+}
+
+#mainMenu
+{
+	list-style: none;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+}
+
+#mainMenu li
+{
+	height: 28px;
+	border-top: solid 1px white;
+	border-bottom: solid 1px black;
+}
+
+.menuHeaderItem
+{
+	background-image: url(../Images/MenuButton.jpg);
+	background-color:#FFFFFF;
+	display: block;
+}
+
+#mainMenu li a
+{
+	display: block;
+	font-family: verdana, arial, helvetica, sans;
+	text-decoration: none;
+	text-align: left;
+	text-indent: 12px;
+	line-height: 20pt;
+	height: 100%;
+	width: 175px;
+	font-size: 8pt;
+	font-weight: bold;
+	
+	background-image: url(../Images/MenuButton.jpg);
+	background-color:#FFFFFF;
+	color: #000000;
+}
+
+#mainMenu li a:hover
+{
+	background-color:#FFFFFF;
+	color: #999999;
+}
+
+#content
+{
+	position: relative;
+	margin-left: 200px;
+	padding-right: 5px;
+}
+
+.ConnectionError
+{
+	font-family: Verdana;
+	font-size: 10pt;
+	color: Red;
+}
+
+.standardTable
+{
+	border-width: 0px;
+}
+
+.standardTable td
+{
+	border: solid 1px black;
+}
+
+.standardTable_Header
+{
+	font-weight: bold;
+}
+
+.standardTable_Header td
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.standardTable_row
+{
+	background-color: White;
+}
+
+.standardTable_row td
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.standardTable_altRow
+{
+	background-color: Gray;
+}
+
+.standardTable_altRow
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.floatRight
+{
+	float: right;
+	margin: auto;
+	padding: 10px;
+	border: thin solid black;
+}
+
+.floatLeft
+{
+	float: left;
+	border: thin solid black;
+	padding: 10px;
+	margin-right: 15px;
+}
+
+.floatCenter
+{
+	float: none;
+	margin: auto;
+	padding: 10px;
+	border: thin solid black;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.signUpCircleBox
+{
+	width: 400px;
+	height: 92px;
+	font-weight: bold;
+	font-family: Verdana;
+	font-size: 16pt;
+}
+
+.signUpCircleBox img
+{
+	height: 92px;
+	width: 91px;
+	display: inline;
+}
+
+.signUpCircleBox .message
+{
+	height: 100%;
+	text-decoration: none;
+	color: Black;
+}
+
+.sectionBreak
+{
+	visibility: hidden;
+	clear: left;
+}
+
+.horizonatalcenter
+{
+}
+
+/*
+Use this for your typical help paragraphs that are at the top
+of most member pages.  It helps put the text into a column format,
+and also helps keep the dynamic help away from the text.
+*/
+.rightPaddedText
+{
+	padding-right: 300px;
+}
+
+/******************************************************
+* Dynamic Help
+******************************************************/
+.DynamicHelp
+{
+	background-color: #FFFFE1;
+	border-bottom: solid 1px black;
+	border-left: solid 1px silver;
+	border-right: solid 1px black;
+	border-top: solid 1px silver;
+	padding: 3px;
+	position: absolute;
+	right: 10px;
+	width: 250px;
+	z-index: 100;
+}
+.DynamicHelp h1
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+}
+.DynamicHelp p
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	padding: 0px;
+	position: relative;
+}
+.DynamicHelp ul
+{
+	font-family: Verdana, Arial;
+	font-size: 8pt;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	padding: 0px;
+	padding-left: 42px;
+	position: relative;
+}
+.DynamicHelp hr
+{
+}
+
+.LinkPackagesTable
+{
+	border-collapse: collapse;
+}
+
+.LinkPackagesTable td
+{
+	border: solid 1px black;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.LinkPackagesTable.goldColumn
+{
+}
+
+.LinkPackagesTable.linkPackagesTable_header
+{
+	font-weight: bold;
+}
+
+.LinkPackagesTable.linkPackagesTable_featureColumn
+{
+	font-weight: bold;
+	text-align: right;
+}
+
+.TermsOfService h1
+{
+	font-family: Verdana, Arial, Halvetica, sans-serif;
+}
+
+.TermsOfService h2
+{
+	font-family: Verdana, Arial, Halvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.TermsOfService p
+{
+	font-family: Verdana, Arial, Halvetica, sans-serif;
+	font-size: 10pt;
+	margin-top: 2px;
+	margin-bottom: 10px;
+}
+.TermsOfService ul
+{
+	font-family: Verdana, Arial, Halvetica, sans-serif;
+	font-size: 10pt;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+.SiteParameters_Width
+{
+	width: 620px;
+}
+.inline
+{
+	display: inline;
+}
+.StepImage
+{
+	float: left;
+	padding-left: 20px;
+}
+.LargTextBlock	/* Use this to avoid collisions with Dynamic Help */
+{
+	padding-right: 275px;
+}
+.StepText
+{
+	padding-right: 200px;
+}
+.Red
+{
+	color: Red;
+}
+.Blue
+{
+	color: Blue;
+}

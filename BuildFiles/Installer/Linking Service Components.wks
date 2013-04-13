@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+	<Fragment>
+		<ComponentGroup Id="groupLinkingServiceComponents">
+			<ComponentRef Id="linkingServiceExe" />
+			<ComponentRef Id="linkingServiceSupportingFiles" />
+		</ComponentGroup>
+
+		<DirectoryRef Id="ServicesInstallDir">
+			<Directory Id="LINKINGSERVICEDIR" Name="LinkSvc" LongName="Linking Service">
+				<Component Id="linkingServiceExe" Guid="7bee8040-c8fd-11da-a94d-0800200c9a66">
+					<File Id='Nle.LinkingService.exe' Name='LinkSvc.exe' LongName="Nle.LinkingService.exe"  src='..\Services\LinkingService\Nle.LinkingService.exe' DiskId ='1'/>
+					<ServiceInstall Id="Nle.LinkingService.exe" Name='Nle.LinkingService' DisplayName='NaturalLinkExchange.com Linking Service'
+						Type='ownProcess' Interactive='yes' Start='auto' Vital='no'
+						ErrorControl='normal'/>
+					<ServiceControl Id="Nle.LinkingService.exe" Name='Nle.LinkingService' Start='install' Stop='both' Remove='uninstall' 
+						Wait='yes'/>
+				</Component>
+				<Component Id="linkingServiceSupportingFiles" Guid="7bee8041-c8fd-11da-a94d-0800200c9a66">
+					<File Id="Nle.Framework.DLL" Name="Framewrk.dll" LongName="Nle.Framework.dll" src="..\Services\LinkingService\Nle.Framework.dll" DiskId="1" />
+					<File Id="YTech.General.DLL" Name="YGeneral.dll" LongName="YTech.General.dll" src="..\Services\LinkingService\YTech.General.dll" DiskId="1" />
+					<File Id="YTech.Db.DLL" Name="YDB.dll" LongName="YTech.Db.DLL" src="..\Services\LinkingService\YTech.Db.DLL" DiskId="1" />
+					<File Id="log4net.dll" Name="log4net.dll" src="..\Services\LinkingService\log4net.dll" DiskId="1" />
+          <File Id="Logging.config" Name="Logging.cfg" LongName="Logging.config" src="..\Services\LinkingService\Logging.config" DiskId="1" />
+				</Component>
+			</Directory>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

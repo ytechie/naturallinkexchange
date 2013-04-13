@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This file is used by PageSelectCategories.ascx to provide a list of names 
+for the QuickLookup feature. This provides a way to rename the categories and add more slots if needed.
+Simply edit the file with the desired names in the format 
+<Lookup itemname="categoryname" itemvalue="1"> </Lookup> 
+where itemname is the label for the drop down list and itemvalue is a unique number that becomes part of each
+cookie written.
+This design is intended for future expansion
+-->
+<Lookups>
+<Lookup itemname="Categories 1" itemvalue="1" > </Lookup>
+<Lookup itemname="Categories 2" itemvalue="2" > </Lookup>
+<Lookup itemname="Categories 3" itemvalue="3" > </Lookup>
+<Lookup itemname="Categories 4" itemvalue="4" > </Lookup>
+<Lookup itemname="Categories 5" itemvalue="5" > </Lookup>
+<Lookup itemname="Categories 6" itemvalue="6" > </Lookup>
+<Lookup itemname="Categories 7" itemvalue="7" > </Lookup>
+<Lookup itemname="Categories 8" itemvalue="8" > </Lookup>
+<Lookup itemname="Categories 9" itemvalue="9" > </Lookup>
+<Lookup itemname="Categories 10" itemvalue="10" > </Lookup>
+</Lookups>

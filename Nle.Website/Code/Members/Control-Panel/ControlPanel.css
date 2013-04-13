@@ -1,0 +1,35 @@
+h2
+{
+	vertical-align: top;
+}
+
+.menuList li h5
+{
+	margin-bottom: 3px;
+}
+
+.menuList li
+{
+	margin-bottom: 13px;
+	list-style-type: none;
+}
+.menuList li img
+{
+	float: left;
+	padding-right: 10px;
+}
+
+.ConfigurationStatus
+{
+	background: #FFFFE1;
+	border-style: ridge;
+	border-color: gainsboro;	
+}
+.Disabled
+{
+	color: Silver;
+}
+.Disabled a
+{
+	text-decoration: underline;
+}

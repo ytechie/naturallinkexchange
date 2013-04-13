@@ -1,0 +1,40 @@
+﻿<?xml version='1.0'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2003/01/wi'>
+  <Product Id='F47A6F48-86C1-47A8-B404-35656C908BEB' Name='NaturalLinkExchange.com' Language='1033' Version='1.0.0.0'
+           Manufacturer='Young Technologies LLC'>
+
+    <Package Id='????????-????-????-????-????????????' Description='NaturalLinkExchange.com Email Engine'
+             Manufacturer='Young Technologies LLC'
+             InstallerVersion='200' Compressed='yes'/>
+    <Media Id='1' Cabinet='dotnet.cab' EmbedCab='yes' />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        
+        <!-- Email engine files -->
+        <Directory Id='EMAILSERVICEDIR' Name='NleEE' LongName='Nle.EmailEngine'>
+          <Component Id='TheService' Guid='60c3f6b0-a4cc-11da-a746-0800200c9a66' Location='local'>
+            <File Id='MainExe' Name='Nle.Em~1.exe' src='Nle.EmailEngine.exe'/>
+            <ServiceInstall Id='EngineSvc' Name='Nle.EmailEngine' DisplayName='NLE Email Engine'
+              Type='ownProcess' Interactive='yes' Start='auto' Vital='yes'
+              ErrorControl='normal'/>
+            <ServiceControl Id='EngineSvc' Name='Nle.EmailEngine' Start='install' Stop='both' Remove='uninstall' Wait='yes'/>
+          </Component>
+        </Directory>
+        
+      </Directory>
+    </Directory>
+
+
+    <!-- Email Engine Feature -->
+    <Feature Id='Feat_EmailEngine' Description='The service responsible for sending emails queued into the NLE database'
+             Title='Email Engine' Level='1' ConfigurableDirectory='EMAILSERVICEDIR' TypicalDefault='install'
+             Absent='disallow' AllowAdvertise='no'>
+      <ComponentRef Id='TheService' Primary='yes' />
+    </Feature>
+
+    <!-- Give us a nice UI -->
+    <UIRef Id="WixUI" />
+
+  </Product>
+</Wix>

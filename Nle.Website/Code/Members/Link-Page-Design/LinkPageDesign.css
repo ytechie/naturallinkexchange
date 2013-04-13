@@ -1,0 +1,52 @@
+.LinkPageSource
+{
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.LinkPageSource textarea
+{
+	height: 250px;
+	width: 750px;
+}
+
+.Tabs input
+{
+	border: outset 1px black;
+	background-color: gainsboro;
+	margin: 0px;
+	padding: 0px;
+	width: 75px;
+}
+
+.PreviewFrame
+{
+	height: 250px;
+	width: 750px;
+	border: solid 1px #A5ACB2;
+	background-color: White;
+}
+
+.Toolbars
+{
+	width: 750px;
+	height: 20px;
+	padding-bottom: 2px;
+}
+
+.DynamicHelp
+{
+	left: -190px;
+	top: 450px;
+	width: 180px;
+}
+
+#sourceToolbar input
+{
+	width: 16%;
+}
+
+.MissingTokens
+{
+	color: Red;
+}

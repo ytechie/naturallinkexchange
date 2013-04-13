@@ -1,0 +1,316 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4035BA56-0F6F-4A72-9B78-BC6EF4E16F3B}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Nle.Framework</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Nle</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Sandbox|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="edtftpnet-1.2.2, Version=1.2.2.0, Culture=neutral, PublicKeyToken=4b0c991f43097782, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\edtftpnet-1.2.2.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <Name>log4net</Name>
+      <HintPath>bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="RadTreeView">
+      <Name>RadTreeView</Name>
+      <HintPath>bin\RadTreeView.dll</HintPath>
+    </Reference>
+    <Reference Include="RSS.NET">
+      <Name>RSS.NET</Name>
+      <HintPath>bin\RSS.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.ServiceProcess">
+      <Name>System.ServiceProcess</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\..\..\..\Common Libraries 2.0\YTech.Db\Code\YTech.Db.csproj">
+      <Project>{88A88535-85FA-4F30-830D-AC9FCA15CE11}</Project>
+      <Name>YTech.Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Common Libraries 2.0\YTech.General\Code\YTech.General.csproj">
+      <Project>{343C21FD-E3AF-4D03-91A0-885D5782322A}</Project>
+      <Name>YTech.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nle.Client\Code\Nle.Client.csproj">
+      <Name>Nle.Client</Name>
+      <Project>{8BE4D2F1-B94C-4B7D-9C4E-F6A2B2F41058}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\ABTesting\ABContent.cs" />
+    <Compile Include="Components\ABTesting\ActionsEnum.cs" />
+    <Compile Include="Components\AccountTypesEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\EmailMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\FtpUploadInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\GlobalSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkPageStatus.cs" />
+    <Compile Include="Components\Reporting\INleReport.cs" />
+    <Compile Include="Components\KeyPhrase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LegalNoticeAgreement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LegalNotices.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LegalNoticeVersion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkCategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkPackage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkParagraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LinkParagraphGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Payment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Reporting\TableReport.cs" />
+    <Compile Include="Components\RssFeed.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\RssFeedItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Service.cs" />
+    <Compile Include="Components\Site.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\SiteRankUrl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Subscription.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\SubscriptionTransaction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\User.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\CategoryList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\LinkArticleGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\ConnectionFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\FtpUploadInfoNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\GlobalSettingNotFound.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\LinkCategoryNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\LinkParagraphGroupNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\LinkParagraphNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\SiteNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\Exceptions\UserNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Db\SqlServer\Database.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\GenerationTypesEnum.cs" />
+    <Compile Include="LinkPage\Spider\MultiSiteSpider.cs" />
+    <Compile Include="LinkPage\Spider\SiteSpider.cs" />
+    <Compile Include="Services\NlePollingServiceBaseV2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Website\LeadTracking.cs" />
+    <Compile Include="LinkPage\ArticleMaintenance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\LinkFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\LinkPageHtmlGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\LinkPageTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\RssFeedMaintenance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\StaticLinkFileGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\StaticLinkFileWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinkPage\Uploader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NleRegistry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Ranking\TopDogPro\CsvParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Ranking\TopDogPro\Ranking.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Ranking\TopDogPro\ServiceConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\NlePollingServiceBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LinkPage\ClientScripts\AspNet.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LinkPage\ClientScripts\PHP.php" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,50 @@
+h4
+{
+	margin: 0px;
+}
+
+.paragraphGroupContainer
+{
+	border: dotted 1px black;
+	padding: 10px;
+	position: relative;
+	margin-top: 40px;
+}
+
+.paragraphGroupContainer h3
+{
+	font-size: 12pt;
+	margin: 0px;
+	position: absolute;
+	left: 0px;
+	top: -15px;
+	background-color: Transparent;
+}
+
+.articleContainer
+{
+	background-color: White;
+	border: dashed 1px gray;
+	margin-top: 30px;
+	margin-bottom: 5px;
+	position: relative;
+	padding: 5px;
+}
+
+.articleContainer h4
+{
+	margin: 0px;
+	position: absolute;
+	left: 0px;
+	top: -17px;
+}
+
+.buttonContainer
+{
+	
+	position: relative;
+	font-size: 8pt;
+	padding: 0px;
+	margin: 0px;
+	float: right;
+}

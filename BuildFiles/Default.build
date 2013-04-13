@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<project name="Default" default="fullBuild" xmlns="http://nant.sf.net/release/0.85-rc3/nant.xsd">
+	<!-- .NET 2.0 isn't supported yet! -->
+	<!-- <property name="nant.settings.currentframework" value="net-2.0" /> -->
+	
+	<!-- If true, the build will display extra logging -->
+	<property name="verbose" value="true" />
+	
+	<property name="outputLocation" value="" />
+	<property name="buildFilesRoot" value="${project::get-base-directory()}\" />
+	<property name="versionRoot" value="${directory::get-parent-directory(buildFilesRoot)}\" />
+	<property name="websiteSourceRoot" value="${versionRoot}Nle.Website\" />
+	<property name="Services.Solution" value="${buildFilesRoot}Services.sln" />
+	<property name="Services.EmailEngine.Source.Path" value="${versionRoot}Nle.EmailEngine\" />
+  <property name="Services.Linker.Source.Path" value="${versionRoot}Nle.LinkingService\Code\" />
+	<property name="Nle.Framework.Database.MasterScript.File" value="${buildFilesRoot}MasterSql.sql" />
+
+	<!-- Set the default build configuration -->
+	<property name="build.Configuration" value="Debug" />
+
+	<property name="Install.Scripts.Source.Path" value="${buildFilesRoot}Installer\" />
+		
+	<property name="Output.Path" value="${buildFilesRoot}Output\" />
+	<!--<property name="Output.Configuration.Path" value="${Output.Path + build.Configuration}\" dynamic="true" />-->
+	<property name="Output.Website.Path" value="${Output.Artifacts.Path}Website\" dynamic="true" />
+	<property name="Output.Services.Path" value="${Output.Artifacts.Path}Services\" dynamic="true" />
+	<property name="Output.Services.EmailEngine.Path" value="${Output.Services.Path}EmailEngine\" dynamic="true" />
+  <property name="Output.Services.Linker.Path" value="${Output.Services.Path}LinkingService\" dynamic="true" />
+	<property name="Output.Web.Dependencies.Path" value="${buildFilesRoot}WebDependencies\"/>
+	<property name="Output.Web.Dependencies.Bin.Path" value="${Output.Web.Dependencies.Path}bin\"/>
+	<property name="Output.Install.Scripts.Path" value="${Output.Artifacts.Path}Installer\" dynamic="true" />
+	
+	<property name="Output.Artifacts.Path" value="${Output.Path + build.Configuration}\" dynamic="true" />
+	<!-- Override the artifacts path if CC.NET is passing one in -->
+	<property name="Output.Artifacts.Path" value="${CCNetArtifactDirectory}\" if="${property::exists('CCNetArtifactDirectory')}" />
+
+	<property name="Nle.Website.Path" value="${versionRoot}Nle.Website\" />
+	<property name="Nle.Website.Source.Path" value="${Nle.Website.Path}Code\" />
+	<property name="Nle.Framework.Path" value="${versionRoot}Nle.Framework\" />
+	<property name="Nle.Framework.Source.Path" value="${Nle.Framework.Path}Code\" />
+	<property name="Nle.Framework.TestSource.Path" value="${Nle.Framework.Path}Tester\" />
+	<property name="Nle.Framework.TestSource.Project" value="${Nle.Framework.TestSource.Path}Nle.Framework_Tester.csproj" />
+	<property name="Nle.Framework.TestSource.Project.Build" value="${Nle.Framework.TestSource.Path}Nle.Framework_Tester-Build.csproj" />
+	<property name="Nle.Framework.Project" value="${versionRoot}Nle.Framework\Code\Nle.Framework.csproj" />
+	<property name="Nle.Framework.Project.Build" value="${versionRoot}Nle.Framework\Code\Nle.Framework-Build.csproj" />
+	<property name="Nle.Framework.Database.Scripts.Path" value="${Nle.Framework.Source.Path}Db\SqlServer\Scripts\" />
+
+	<property name="progFiles" value="${environment::get-folder-path('ProgramFiles')}" />
+	
+	<!-- File Locaction Properties -->
+	<property name="websiteSolutionFile" value="${buildFilesRoot}Website.sln" />
+
+	<!-- Build Utilities -->
+	<property name="frameworkPath" value="${environment::get-variable('SystemRoot')}\Microsoft.NET\Framework\v2.0.50727\" />
+	<property name="msbuildExe" value="${frameworkPath}MSBuild.exe" />
+	<property name="projectReferenceRewriter" value="${buildFilesRoot}Project Reference Rewriter\ProjRefToDll.exe" />
+	<property name="Wix.Path" value="${buildFilesRoot}WiX\" />
+
+	<!-- Some C# code snippets that we need -->
+	<script language="C#" prefix="file" >
+		<code>
+			<![CDATA[
+              [DllImport("kernel32.dll",EntryPoint="GetShortPathNameA")]
+              private static extern int GetShortPathName(string lpszLongPath, StringBuilder lpszShortPath, int cchBuffer);
+
+              [Function("get-short-name")]
+              public static string GetShortName(string longName)
+              {
+                StringBuilder sPath = new StringBuilder(longName.Length);
+                GetShortPathName(longName, sPath, longName.Length);
+                return sPath.ToString();
+              }
+            ]]>
+		</code>
+		<imports>
+			<import namespace="System.Runtime.InteropServices" />
+			<import namespace="System.Text" />
+		</imports>
+	</script>
+
+	<target name="buildPrep" description="Preparses the source code and dependencies for building">
+		<echo message="Copying common DLLs to the framwork project from ${versionRoot}Nle.Website\Code\bin\" />
+
+		<echo message="Common libraries have been located" if="${file::exists(versionRoot + 'Nle.Website\Code\bin\YTech.General.dll')}" />
+
+		<!-- Copy the common library dependencies to the bin folders -->
+		<copy todir="${Nle.Framework.Source.Path}bin" verbose="${verbose}" overwrite="true">
+			<fileset>
+				<include name="${versionRoot}Nle.Website\Code\bin\YTech.DB.dll" />
+				<include name="${versionRoot}Nle.Website\Code\bin\YTech.General.dll" />
+			</fileset>
+		</copy>
+		<copy todir="${Nle.Framework.TestSource.Path}bin" verbose="${verbose}" overwrite="true">
+			<fileset>
+				<include name="${versionRoot}Nle.Website\Code\bin\YTech.DB.dll" />
+				<include name="${versionRoot}Nle.Website\Code\bin\YTech.General.dll" />
+			</fileset>
+		</copy>
+
+		<!-- Make a new copy of the framework project file -->
+		<copy tofile="${Nle.Framework.Project.Build}" file="${Nle.Framework.Project}"  verbose="${verbose}" overwrite="true" />
+		<copy tofile="${Nle.Framework.TestSource.Project.Build}" file="${Nle.Framework.TestSource.Project}"  verbose="${verbose}" overwrite="true" />
+
+		<echo message="Rewriting project references to DLL references" />
+		<exec program="${projectReferenceRewriter}" verbose="${verbose}">
+			<arg value="-ProjectFile=${Nle.Framework.Project.Build}" />
+			<arg value="-ProjectName=YTech.General" />
+			<arg value="-DLLPath=bin\YTech.General.dll" />
+		</exec>
+		<exec program="${projectReferenceRewriter}">
+			<arg value="-ProjectFile=${Nle.Framework.Project.Build}" />
+			<arg value="-ProjectName=YTech.DB" />
+			<arg value="-DLLPath=bin\YTech.DB.dll" />
+		</exec>
+
+		<exec program="${projectReferenceRewriter}">
+			<arg value="-ProjectFile=${Nle.Framework.TestSource.Project.Build}" />
+			<arg value="-ProjectName=YTech.General" />
+			<arg value="-DLLPath=bin\YTech.General.dll" />
+		</exec>
+		<exec program="${projectReferenceRewriter}">
+			<arg value="-ProjectFile=${Nle.Framework.TestSource.Project.Build}" />
+			<arg value="-ProjectName=YTech.DB" />
+			<arg value="-DLLPath=bin\YTech.DB.dll" />
+		</exec>
+	</target>
+
+	<target name="buildWebsite" depends="buildPrep, printDebugInfo">
+		<echo message="Building Web Dependencies" />
+		<exec program="${msbuildExe}">
+			<arg value="${websiteSolutionFile}" />
+			<arg value="/verbosity:q" />
+			<arg value="/p:Configuration=${build.Configuration}" />
+		</exec>
+
+		<!-- We no longer need the build version of the framework project, clean it up -->
+		<!--<delete file="${Nle.Framework.Project.Build}" />
+		<delete file="${Nle.Framework.TestSource.Project.Build}" />-->
+
+		<echo message="Moving web dependencies from ${Output.Web.Dependencies.Bin.Path} to ${Nle.Website.Source.Path}bin\" />
+		<move todir="${Nle.Website.Source.Path}bin\" verbose="${verbose}" overwrite="true">
+			<fileset basedir="${Output.Web.Dependencies.Bin.Path}">
+				<include name="*.*" />
+			</fileset>
+		</move>
+
+		<!-- The dependencies folder is no longer needed -->
+		<!--<delete dir="${Output.Web.Dependencies.Path}" />-->
+
+
+
+		<!-- 
+      Note: We have to do some goofy stuff to get this to work, because the ASPNET_Compiler
+            doesn't always work the best with long file names. 
+    -->
+
+		<echo message="Creating Website Path" verbose="${verbose}" />
+		<mkdir dir="${Output.Website.Path}" unless="${directory::exists(Output.Website.Path)}" />
+		<property name="Output.Website.Path.Short" value="${file::get-short-name(Output.Website.Path)}"/>
+		<echo message="${Output.Website.Path.Short}" verbose="${verbose}" />
+
+		<!-- Create the web.config from the release.config if we need one -->
+		<copy file="${Nle.Website.Source.Path}Release.config" tofile="${Nle.Website.Source.Path}Web.config" verbose="${verbose}" 
+				unless="${file::exists(Nle.Website.Source.Path + 'Web.config')}" />
+		
+		<echo message="Building Website" />
+		<exec program="${frameworkPath}aspnet_compiler" verbose="${verbose}">
+			<arg line="-p ${file::get-short-name(websiteSourceRoot)}Code\" />
+			<arg line="-v /" />
+			<arg line="${Output.Website.Path.Short}" />
+		</exec>
+	</target>
+
+	<target name="buildServices" depends="buildPrep">
+		<echo message="Building Services" />
+		<exec program="${msbuildExe}">
+			<arg value="${Services.Solution}" />
+			<arg value="/verbosity:q" />
+			<arg value="/p:Configuration=${build.Configuration}" />
+			<arg value="/t:Rebuild" />
+		</exec>
+
+		<echo message="Moving email engine files to output folder" />
+		<move todir="${Output.Services.EmailEngine.Path}" verbose="${verbose}" overwrite="true">
+			<fileset basedir="${Services.EmailEngine.Source.Path}bin\${build.Configuration}\">
+				<include name="*.*" />
+				<exclude name="*.vshost.exe" />
+				<!-- Exclude some DLL's that we know aren't used -->
+				<exclude name="RadTreeView.*" />
+				<exclude name="RSS.NET.*" />
+				<exclude name="*.xml"/>
+			</fileset>
+		</move>
+
+    <echo message="Moving linking service files to output folder" />
+    <move todir="${Output.Services.Linker.Path}" verbose="${verbose}" overwrite="true">
+      <fileset basedir="${Services.Linker.Source.Path}bin\${build.Configuration}\">
+        <include name="*.*" />
+        <exclude name="*.vshost.exe" />
+        <!-- Exclude some DLL's that we know aren't used -->
+        <exclude name="RadTreeView.*" />
+        <exclude name="RSS.NET.*" />
+        <exclude name="*.xml"/>
+      </fileset>
+    </move>
+	</target>
+  
+	<target name="buildServiceInstallers" depends="buildServices" if="${property::exists('Wix.Path')}">
+		<echo message="Copying install files to output folder" />
+		<copy todir="${Output.Artifacts.Path}">
+			<fileset>
+				<include name="${Install.Scripts.Source.Path}*.*" />
+			</fileset>
+		</copy>
+
+		<loadtasks assembly="${Wix.Path}Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll" />
+
+    <!-- Build the email engine installer -->
+    
+		<candle out="${Output.Install.Scripts.Path}" exedir="${Wix.Path}">
+			<sources>
+				<include name="${Output.Install.Scripts.Path}Email Engine Components.wks" />
+				<include name="${Output.Install.Scripts.Path}Email Engine Installer.wks" />
+			</sources>
+		</candle>
+
+		<property name="Wix.Path.Short" value="${file::get-short-name(Wix.Path)}"/>
+
+		<light out="${Output.Install.Scripts.Path}Nle Email Engine.msi" exedir="${Wix.Path}" locfile="${Wix.Path.Short}WixUI_en-us.wxl" rebuild="true">
+			<sources>
+				<include name="${Output.Install.Scripts.Path}Email Engine Components.wixobj" />
+				<include name="${Output.Install.Scripts.Path}Email Engine Installer.wixobj" />
+			</sources>			
+		</light>
+
+    <!-- Build the linking service installer -->
+    <candle out="${Output.Install.Scripts.Path}" exedir="${Wix.Path}">
+      <sources>
+        <include name="${Output.Install.Scripts.Path}Linking Service Components.wks" />
+        <include name="${Output.Install.Scripts.Path}Linking Service Installer.wks" />
+      </sources>
+    </candle>
+
+    <property name="Wix.Path.Short" value="${file::get-short-name(Wix.Path)}"/>
+
+    <light out="${Output.Install.Scripts.Path}Nle Linking Service.msi" exedir="${Wix.Path}" locfile="${Wix.Path.Short}WixUI_en-us.wxl" rebuild="true">
+      <sources>
+        <include name="${Output.Install.Scripts.Path}Linking Service Components.wixobj" />
+        <include name="${Output.Install.Scripts.Path}Linking Service Installer.wixobj" />
+      </sources>
+    </light>
+
+    <!-- Clean up -->
+    
+		<delete>
+			<fileset>
+				<include name="${Output.Install.Scripts.Path}*.WixObj" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="build" description="compiles the source code" depends="buildWebsite, buildServices">
+	</target>
+
+	<target name="printDebugInfo" description="Gives a quick summary of how things are set">
+		<echo message="Root Folder: ${versionRoot}" if="${verbose}" />
+		<echo message="Build Files Location: ${buildFilesRoot}" if="${verbose}" />
+		<echo message="MSBuild Exe: ${msbuildExe}" if="${verbose}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${Output.Web.Dependencies.Path}" if="${directory::exists(Output.Web.Dependencies.Path)}" />
+		<delete dir="${Output.Path}" if="${directory::exists(Output.Path)}" />		
+	</target>
+
+	<target name="unitTest" depends="buildWebsite">
+		<nunit2>
+			<test assemblyname="${Nle.Framework.TestSource.Path}bin\${build.Configuration}\Nle.Framework_Tester.dll" />
+			<formatter type="Xml" outputdir="${Output.Artifacts.Path}" extension=".xml" usefile="true" />
+		</nunit2>
+	</target>
+	
+	<target name="fullBuild" depends="clean, unitTest, buildWebsite, buildServiceInstallers, createMasterSqlScript">
+			
+	</target>
+
+	<target name="createUploadCopy" depends="buildWebsite">
+		<fail message="This feature has not yet been implemented" />
+	</target>
+
+	<target name="createMasterSqlScript">
+		<property name="currSqlFile" value="" />
+		<property name="currSqlContents" value="" />
+
+		<if test="${file::exists(Nle.Framework.Database.MasterScript.File)}">
+			<delete file="${Nle.Framework.Database.MasterScript.File}" />
+		</if>
+
+		<echo message="Adding Create Database Scripts" />
+		<loadfile file="${Nle.Framework.Database.Scripts.Path}CreateDatabase.sql" property="currSqlContents" />
+		<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+
+		<echo message="Adding Post-Create Scripts" />
+		<loadfile file="${Nle.Framework.Database.Scripts.Path}PostCreate.sql" property="currSqlContents" />
+		<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+		
+		<echo message="Adding Table Creation Scripts" />
+		<loadfile file="${Nle.Framework.Database.Scripts.Path}Tables.sql" property="currSqlContents" />
+		<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+
+		<echo message="Combining Function Scripts" />
+		<foreach item="File" in="${Nle.Framework.Database.Scripts.Path}Functions\" property="currSqlFile">
+			<loadfile file="${currSqlFile}" property="currSqlContents" />
+			<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+		</foreach>
+
+		<echo message="Combining Stored Procedure Scripts" />
+		<foreach item="File" in="${Nle.Framework.Database.Scripts.Path}Stored Procedures\" property="currSqlFile">
+			<loadfile file="${currSqlFile}" property="currSqlContents" />
+			<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+		</foreach>
+
+		<echo message="Combining Static Data Scripts" />
+		<foreach item="File" in="${Nle.Framework.Database.Scripts.Path}Static Data\" property="currSqlFile">
+			<loadfile file="${currSqlFile}" property="currSqlContents" />
+			<echo file="${Nle.Framework.Database.MasterScript.File}" append="true" message="${currSqlContents}" />
+		</foreach>
+	</target>
+    
+</project>

@@ -1,0 +1,63 @@
+﻿body 
+{
+}
+
+h1.ReportList
+{
+	font-family: Arial;
+	font-size: small;
+	font-weight: bold;
+	margin-top: 25px;
+	margin-bottom: 2px;
+	padding-bottom: 0px;
+}
+hr
+{
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
+
+.ReportLink
+{
+	display: block;
+	font-family: Arial;
+	font-size: small;
+}
+
+/**********************************************
+ * TableReport Classes
+ **********************************************/
+.TableReport
+{
+	margin-bottom: 20px;
+}
+.TableReport h1
+{
+	margin: 0px;
+	padding: 0px;
+}
+.TableReport_Table
+{
+	border-color: white;
+	font-family: Arial;
+	font-size: small;
+	margin: 0px;
+	margin-bottom: 20px;
+	padding: 0px;
+}
+.TableReport_HeaderStyle
+{
+	background-color: Navy;
+	color: White;
+	font-size: small;
+	font-weight: bold;
+	text-align: center
+}
+.TableReport_ItemStyle
+{
+	background-color: White;
+}
+.TableReport_AlternatingItemStyle
+{
+	background-color: Gainsboro;
+}

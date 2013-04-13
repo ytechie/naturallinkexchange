@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Add meta tags for master</Title>
+			<Shortcut>mt</Shortcut>
+			<Description>
+        Adds a section to a page that adds keywords and a description to the meta
+        tags for the master page.  You would normally use this in the page_load event
+        of a page that uses the main master page.
+      </Description>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+        <Literal>
+          <ID>keywords</ID>
+          <ToolTip>The keywords to use in the meta tag for this page</ToolTip>
+          <Default>exchange, natural, naturally, link, link farm, reciprocal</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>
+            The description to use in the meta tag for this page.
+          </ToolTip>
+          <Default>
+            Add Links Naturally - Increasing Your Impact on Search Engine Rankings and Bringing Your Site More Traffic
+          </Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[MainMaster mp = (MainMaster)Page.Master;
+
+            mp.PageKeywords = "$keywords$";
+            mp.PageDescription = "$description$";$end$
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

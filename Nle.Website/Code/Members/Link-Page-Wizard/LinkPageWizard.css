@@ -1,0 +1,20 @@
+.ImportUpload
+{
+	width: 300px;
+}
+
+.wizardNavigation
+{
+	margin-top: 25px;
+}
+
+.wizardNavigation input
+{
+	width: 75px;
+}
+
+.wizardContent
+{
+	vertical-align: middle;
+	height: 135px;
+}

@@ -1,0 +1,84 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MainMaster" %>
+
+<%@ Register TagPrefix="ss" Namespace="Nle.Website.Common_Controls" %>
+<%@ Register TagPrefix="sh" Src="~/Common_Controls/StatusHeader.ascx" TagName="StatusHeader" %>
+
+<!DOCTYPE  html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head runat="Server">
+		<title>Natural Link Exchange - Automated Link Management System</title>
+
+		<!-- StyleSheets & Scripts -->
+		<link rel="stylesheet" type="text/css" href="~/Styles/Global.css" />
+	</head>
+	<body>
+		<form id="Form1" runat="server">			
+		  <div class="menuContainer">
+	      <img runat="Server" class="menuHeaderImage" src="~/Images/Menu-Top.gif" alt="" />
+	      <ul id="mainMenu">
+		      <li class="menuHeaderItem">
+		      </li>
+		      <li>
+			      <a id="A1" runat="server" href="~/">Home</a>
+		      </li>
+		      <li>
+			      <asp:HyperLink Runat="server" id="lnkControlPanel" />
+		      </li>
+		      <li>
+			      <a runat="Server" href="~/Sign-Up/">Signup Now</a>
+		      </li>
+		      <li>
+			      <a runat="Server" href="~/How-Does-This-Work/">How Does This Work?</a>
+		      </li>
+		      <li>
+			      <a runat="Server" href="~/Support/">Support/Contact Us</a>
+		      </li>
+		      <li>
+			      <a runat="Server" href="~/FAQ/">FAQ</a>
+		      </li>
+		      <li>
+			      <a runat="Server" href="~/#News">News</a>
+		      </li>
+		      <li class="menuHeaderItem">
+		      </li>
+	      </ul>
+      </div>
+
+      <div id="googleSearchContainer">
+	      <asp:TextBox Runat="server" ID="txtGoogleSearch" /><br />
+	      <asp:Button Runat="server" Text="Google Search Site" ID="cmdGoogleSearch" />
+      </div>
+      
+      <div>
+				<a runat="Server" href="~/Sign-Up/">
+					<img runat="Server" src="~/Images/StarBurst.gif" alt="Sign Up For FREE Automated Linking Service" class="starBurst" />
+				</a>
+			</div>
+			
+			      <div>
+	      <a id="A2" runat="Server" href="~/">
+	        <img runat="Server" id="mainLogo" class="mainLogo" src="~/Images/MainLogo.gif" alt="Natural Link Exchange.com" />
+	      </a><asp:Label CssClass="SandboxLabel" ID="litSandbox" runat="server" />
+	      <img id="Img1" runat="Server" src="~/Images/StretchBar.jpg" alt="" class="stretchBar" />
+	      <img id="Img2" runat="Server" src="~/Images/Home.jpg" alt="" class="pictureBar" />
+	      <img id="Img3" runat="Server" src="~/Images/Separator.jpg" alt="" class="separatorBar" />
+      </div>
+      
+      <div id="content">
+        <asp:ContentPlaceHolder ID="mainContent" runat="server" />
+      </div>
+
+        <sh:StatusHeader runat="server" id="shStatus" />
+      
+      <!-- Google Analytics Script -->
+			<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+			</script>
+			<script type="text/javascript">
+				_uacct = "UA-298478-1";
+				urchinTracker();
+			</script>
+
+		</form>
+	</body>
+</html>
